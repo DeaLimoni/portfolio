@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dea Limoni — Software Developer</title>
+<meta name="description" content="Portfolio of Dea Limoni — Computer & Software Engineering student and developer building web, mobile, and secure software." />
+<style>
+  :root {
+    --bg: #0b0e14;
+    --bg-2: #11151f;
+    --card: #151a26;
+    --card-hover: #1b2130;
+    --border: #232a3a;
+    --text: #e6e9f0;
+    --muted: #9aa4b8;
+    --accent: #6ea8fe;
+    --accent-2: #8b7cf6;
+    --gold: #f4c04e;
+    --tag-bg: #1e2536;
+    --radius: 14px;
+    --max: 1080px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11, 14, 20, 0.75);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-weight: 700; letter-spacing: .3px; font-size: 1.05rem; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a { color: var(--muted); font-size: .95rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    padding: 104px 0 84px; text-align: center;
+    background:
+      radial-gradient(600px 300px at 50% -10%, rgba(110,168,254,.18), transparent 70%),
+      radial-gradient(500px 300px at 80% 10%, rgba(139,124,246,.12), transparent 70%);
+  }
+  .hero .eyebrow {
+    display: inline-block; color: var(--accent); font-size: .85rem; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.1; font-weight: 800; margin-bottom: 18px;
+    background: linear-gradient(90deg, #fff 20%, var(--accent) 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero p { color: var(--muted); font-size: 1.12rem; max-width: 640px; margin: 0 auto 22px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px;
+    padding: 8px 16px; border-radius: 999px; font-size: .85rem; font-weight: 600;
+    color: var(--gold); background: rgba(244,192,78,.1); border: 1px solid rgba(244,192,78,.3);
+  }
+  .btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 10px;
+    font-weight: 600; font-size: .95rem; transition: transform .15s, background .2s, border-color .2s;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--accent); color: #0b0e14; }
+  .btn-primary:hover { transform: translateY(-2px); background: #86b7ff; }
+  .btn-ghost { border-color: var(--border); color: var(--text); }
+  .btn-ghost:hover { transform: translateY(-2px); border-color: var(--accent); }
+
+  /* SECTIONS */
+  section { padding: 78px 0; }
+  .section-head { margin-bottom: 42px; }
+  .section-head h2 { font-size: 1.9rem; font-weight: 800; display: inline-flex; align-items: baseline; gap: 12px; }
+  .section-head h2 .num { color: var(--accent); font-size: 1.05rem; font-weight: 600; }
+  .section-head p { color: var(--muted); margin-top: 10px; max-width: 640px; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
+  .about-text p { color: var(--muted); margin-bottom: 16px; }
+  .about-text strong { color: var(--text); }
+  .skills h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin: 0 0 14px; }
+  .skills h3:not(:first-child) { margin-top: 24px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+  .skill-tags span {
+    background: var(--tag-bg); border: 1px solid var(--border); color: var(--text);
+    padding: 7px 14px; border-radius: 999px; font-size: .85rem;
+  }
+
+  /* TIMELINE */
+  .timeline { position: relative; margin-left: 6px; padding-left: 30px; border-left: 2px solid var(--border); }
+  .tl-item { position: relative; padding-bottom: 34px; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -39px; top: 4px; width: 14px; height: 14px;
+    border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(110,168,254,.15);
+  }
+  .tl-item .date { font-size: .8rem; color: var(--accent); font-weight: 600; letter-spacing: .5px; }
+  .tl-item h4 { font-size: 1.1rem; margin: 4px 0 2px; }
+  .tl-item .org { color: var(--muted); font-size: .95rem; margin-bottom: 6px; }
+  .tl-item .detail { color: var(--muted); font-size: .92rem; }
+
+  /* PROJECTS */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 26px; display: flex; flex-direction: column;
+    transition: transform .18s, border-color .2s, background .2s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--accent); background: var(--card-hover); }
+  .card .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .card .icon {
+    width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center;
+    background: linear-gradient(135deg, rgba(110,168,254,.2), rgba(139,124,246,.2)); font-size: 1.3rem;
+  }
+  .card .links a { color: var(--muted); font-size: .9rem; transition: color .2s; }
+  .card .links a:hover { color: var(--accent); }
+  .card .links .muted-label { color: #6b7488; font-size: .82rem; font-style: italic; }
+  .card h3 { font-size: 1.18rem; margin-bottom: 8px; }
+  .card .desc { color: var(--muted); font-size: .93rem; flex-grow: 1; margin-bottom: 18px; }
+  .card .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .card .tags span {
+    font-size: .76rem; color: var(--accent); background: rgba(110,168,254,.1);
+    border: 1px solid rgba(110,168,254,.25); padding: 4px 10px; border-radius: 6px;
+  }
+
+  /* CONTACT */
+  .contact { text-align: center; }
+  .contact p { color: var(--muted); max-width: 520px; margin: 0 auto 32px; }
+  .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .contact-links a {
+    display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px;
+    border: 1px solid var(--border); border-radius: 12px; font-weight: 600; color: var(--text);
+    background: var(--card); transition: transform .15s, border-color .2s, background .2s;
+  }
+  .contact-links a:hover { transform: translateY(-3px); border-color: var(--accent); background: var(--card-hover); }
+  .contact-links svg { width: 20px; height: 20px; }
+
+  footer { border-top: 1px solid var(--border); padding: 28px 0; text-align: center; color: var(--muted); font-size: .88rem; }
+
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 28px; }
+    .grid { grid-template-columns: 1fr; }
+    section { padding: 58px 0; }
+    .hero { padding: 76px 0 56px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="logo">Dea<span>.</span>Limoni</div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Software Developer</span>
+    <h1>Hi, I'm Dea Limoni.<br />I build and break software.</h1>
+    <p>Computer &amp; Software Engineering student and developer, with hands-on experience in Java development, web and mobile apps, and application security testing.</p>
+    <div class="badge">🏆 1st Place — CTF Competition, ShEcurity &amp; Hackathon 2025</div>
+    <div class="btns">
+      <a href="#projects" class="btn btn-primary">View my work</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="num">01.</span> About me</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a <strong>Computer &amp; Software Engineering</strong> student at the University of Prishtina "Hasan Prishtina," with a growing focus on building reliable software and testing it thoroughly.</p>
+        <p>I completed a <strong>Java developer internship at Tectigon Academy</strong>, where I built features for a Java application, applied object-oriented principles, and worked with a team using Git. Alongside development, I've built up strong skills in <strong>QA and security testing</strong> — from automated testing with Playwright, JMeter, and Appium to security assessments with Burp Suite and Gophish.</p>
+        <p>I recently took <strong>1st place in the CTF competition</strong> at the ShEcurity &amp; Hackathon 2025 Conference. I like clean, understandable code, and I enjoy both making things work and figuring out how they break.</p>
+      </div>
+      <div class="skills">
+        <h3>Languages &amp; Data</h3>
+        <div class="skill-tags">
+          <span>Java</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>HTML &amp; CSS</span>
+        </div>
+        <h3>Testing &amp; Security</h3>
+        <div class="skill-tags">
+          <span>Appium</span><span>Playwright</span><span>JMeter</span><span>Postman</span><span>Jest</span><span>Burp Suite</span><span>Gophish</span><span>Kali Linux</span>
+        </div>
+        <h3>Tools &amp; Practices</h3>
+        <div class="skill-tags">
+          <span>Git &amp; GitHub</span><span>Firebase</span><span>OOP</span><span>Problem-Solving</span><span>Teamwork</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="background: var(--bg-2);">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="num">02.</span> Experience &amp; Education</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="date">2022 — Present</div>
+        <h4>BSc, Computer &amp; Software Engineering</h4>
+        <div class="org">University of Prishtina "Hasan Prishtina" · Prishtina, Kosovo</div>
+      </div>
+      <div class="tl-item">
+        <div class="date">Oct — Dec 2025</div>
+        <h4>Web Development Training</h4>
+        <div class="org">Probit Academy · Prishtina, Kosovo</div>
+      </div>
+      <div class="tl-item">
+        <div class="date">Feb — Jun 2025</div>
+        <h4>Java Developer Intern</h4>
+        <div class="org">Tectigon Academy · Prishtina, Kosovo</div>
+        <div class="detail">Developed features for a Java application, applied OOP concepts, performed debugging and testing, and collaborated with the team using Git.</div>
+      </div>
+      <div class="tl-item">
+        <div class="date">Jun — Nov 2025</div>
+        <h4>Sales Assistant</h4>
+        <div class="org">Weinkos shpk · Therandë, Kosovo</div>
+        <div class="detail">Provided customer service, product recommendations, and supported daily sales activities.</div>
+      </div>
+      <div class="tl-item">
+        <div class="date">2020 — 2025</div>
+        <h4>Photographer</h4>
+        <div class="org">2A Production · Therandë, Kosovo</div>
+        <div class="detail">Photographed weddings and events, edited and retouched photos, and created visual content for social media marketing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="num">03.</span> Projects</h2>
+      <p>A mix of development, web, and security/QA work. GitHub links are included where the source is public.</p>
+    </div>
+    <div class="grid">
+
+      <article class="card">
+        <div class="top">
+          <div class="icon">📱</div>
+          <div class="links"><a href="https://github.com/DeaLimoni/Projekti_PajisjeMobilje" target="_blank" rel="noopener">GitHub ↗</a></div>
+        </div>
+        <h3>Firebase Android App</h3>
+        <p class="desc">An Android app using Firebase Realtime Database and Authentication for full user management — registration, secure login, password changes, email updates, and account deletion, all synced in real time.</p>
+        <div class="tags"><span>Java</span><span>Android</span><span>Firebase</span><span>Gradle</span></div>
+      </article>
+
+      <article class="card">
+        <div class="top">
+          <div class="icon">🧴</div>
+          <div class="links"><a href="https://github.com/DeaLimoni/SkinCare" target="_blank" rel="noopener">GitHub ↗</a></div>
+        </div>
+        <h3>SkinCare Web App</h3>
+        <p class="desc">A skincare products web application with user registration and login, product listings, sales, staff management, a contact form, and a messages inbox. Built with PHP and custom CSS.</p>
+        <div class="tags"><span>PHP</span><span>CSS</span><span>JavaScript</span><span>Auth</span></div>
+      </article>
+
+      <article class="card">
+        <div class="top">
+          <div class="icon">🛡️</div>
+          <div class="links"><span class="muted-label">Academic project</span></div>
+        </div>
+        <h3>Web App Security Testing (Burp Suite)</h3>
+        <p class="desc">Identified and analyzed common web vulnerabilities on a deliberately vulnerable site — PHP CGI RCE, DOM-based XSS, clickjacking, access-control flaws, and authentication bypass — and documented practical mitigations.</p>
+        <div class="tags"><span>Burp Suite</span><span>Web Security</span><span>Pentesting</span></div>
+      </article>
+
+      <article class="card">
+        <div class="top">
+          <div class="icon">🧪</div>
+          <div class="links"><span class="muted-label">Academic project</span></div>
+        </div>
+        <h3>System Testing &amp; QA</h3>
+        <p class="desc">Functional and non-functional testing across three systems — a real-estate app, the Elsig website, and the Udemy mobile app — evaluating functionality, performance, security, and APIs.</p>
+        <div class="tags"><span>Playwright</span><span>JMeter</span><span>Postman</span><span>Jest</span><span>Nikto</span></div>
+      </article>
+
+      <article class="card">
+        <div class="top">
+          <div class="icon">🎣</div>
+          <div class="links"><span class="muted-label">Academic project</span></div>
+        </div>
+        <h3>Gophish Phishing Simulation</h3>
+        <p class="desc">Used Gophish to simulate phishing attacks in a controlled environment, measuring user behavior and phishing awareness to improve cybersecurity training through real-time monitoring and data analysis.</p>
+        <div class="tags"><span>Gophish</span><span>Security Awareness</span><span>Social Engineering</span></div>
+      </article>
+
+      <article class="card">
+        <div class="top">
+          <div class="icon">🗓️</div>
+          <div class="links"><a href="https://github.com/DeaLimoni/Planifikimi-i-Detyrave-me-Varesi-dhe-AlokimOptimal-te-Burimeve_Grupi31" target="_blank" rel="noopener">GitHub ↗</a></div>
+        </div>
+        <h3>Task Scheduling &amp; Resource Allocation</h3>
+        <p class="desc">A Python system that schedules jobs across machines to maximize profit while respecting deadlines, task dependencies, and machine capacity. Built as a team project for algorithm design.</p>
+        <div class="tags"><span>Python</span><span>Algorithms</span><span>Optimization</span></div>
+      </article>
+
+      <article class="card">
+        <div class="top">
+          <div class="icon">🌱</div>
+          <div class="links"><span class="muted-label">Academic project</span></div>
+        </div>
+        <h3>Garden Shop</h3>
+        <p class="desc">A PHP web app demonstrating core PHP and OOP concepts — classes, inheritance, and access modifiers — plus RegEx form validation and sessions &amp; cookies to manage user preferences and visits.</p>
+        <div class="tags"><span>PHP</span><span>OOP</span><span>RegEx</span><span>Sessions</span></div>
+      </article>
+
+      <article class="card">
+        <div class="top">
+          <div class="icon">🎮</div>
+          <div class="links"><a href="https://github.com/DeaLimoni/TICTACTOE_GAME" target="_blank" rel="noopener">GitHub ↗</a></div>
+        </div>
+        <h3>Tic-Tac-Toe Game</h3>
+        <p class="desc">A tic-tac-toe game built in Java with JavaFX, featuring a clean UI, turn-based gameplay, and logic for detecting wins, losses, and draws.</p>
+        <div class="tags"><span>Java</span><span>JavaFX</span><span>Game Logic</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background: var(--bg-2);">
+  <div class="wrap contact">
+    <div class="section-head" style="text-align:center;">
+      <h2 style="justify-content:center;"><span class="num">04.</span> Get in touch</h2>
+    </div>
+    <p>I'm always open to new opportunities and collaborations. Feel free to reach out through any of the channels below.</p>
+    <div class="contact-links">
+      <a href="https://github.com/DeaLimoni" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg>
+        GitHub
+      </a>
+      <a href="mailto:dealimoni15@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        Email
+      </a>
+      <a href="https://www.linkedin.com/in/dea-limoni-08b1ba2b8/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © <span id="year"></span> Dea Limoni · Built with HTML &amp; CSS
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
